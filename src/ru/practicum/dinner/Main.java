@@ -18,20 +18,14 @@ public class Main {
             String command = scanner.nextLine();
 
             switch (command) {
-                case "1":
-                    addNewDish();
-                    break;
-                case "2":
-                    generateDishCombo();
-                    break;
-                case "3":
+                case "1" -> addNewDish();
+                case "2" -> generateDishCombo();
+                case "3" -> dc.printAllDishes();
+                case "4" -> {
                     System.out.println("Работа конструктора обедов завершена. До свидания!");
                     return;
-                case "4":
-                    dc.printAllDishes();
-                    break;
-                default:
-                    System.out.println("Введена неверная команда");
+                }
+                default -> System.out.println("Введена неверная команда");
             }
         }
     }
@@ -40,8 +34,8 @@ public class Main {
         System.out.println("Выберите команду:");
         System.out.println("1 - Добавить новое блюдо");
         System.out.println("2 - Сгенерировать комбинации блюд");
-        System.out.println("3 - Выход");
-        System.out.println("4 - Вывести переречень всех блюд");
+        System.out.println("3 - Вывести переречень всех блюд");
+        System.out.println("4 - Выход");
     }
 
     private static void addNewDish() {

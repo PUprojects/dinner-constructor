@@ -2,22 +2,16 @@ package ru.practicum.dinner;
 import java.util.*;
 
 public class DinnerConstructor {
-    private final HashMap<String, ArrayList<String>> dishesByType;
-    private final ArrayList<String> dinerDishesTypes;
-    private static final Random random = new Random();
-
-    DinnerConstructor() {
-        dishesByType = new HashMap<>();
-        dinerDishesTypes = new ArrayList<>();
-    }
+    private final HashMap<String, ArrayList<String>> dishesByType = new HashMap<>();
+    private final ArrayList<String> dinerDishesTypes = new ArrayList<>();
 
     void addDish(String dishType, String dishName) {
-        dishesByType.putIfAbsent(dishType, new ArrayList<>());
-        dishesByType.get(dishType).add(dishName);
+        dishesByType.computeIfAbsent(dishType, l -> new ArrayList<>()).add(dishName);
     }
 
     ArrayList<ArrayList<String>> generateDiners(int count) {
         ArrayList<ArrayList<String>> dinersSet = new ArrayList<>(count);
+        Random random = new Random();
 
         for (int i = 0; i < count; i++) {
             ArrayList<String> diner = new ArrayList<>(dinerDishesTypes.size());
